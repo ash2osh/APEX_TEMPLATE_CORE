@@ -525,6 +525,11 @@
       "executable": false
     },
     {
+      "path": "tests/fixtures/baseline/ords_modules.sql",
+      "sha256": "0287769540072d514306cc60ac197fbf26be90d1e0fa810ceca4be66765bc8b6",
+      "executable": false
+    },
+    {
       "path": "tests/fixtures/baseline/reference_data_constraints.json",
       "sha256": "3e2ffafd71640ef9a70890e8c7e12bbe1289ea825224f989c57e36cf3ba19737",
       "executable": false
@@ -542,6 +547,11 @@
     {
       "path": "tests/fixtures/baseline/source_dev.json",
       "sha256": "62f9075f99f7b49a72b9a7b4491b0a2f8ce7147e170793e5453d4f0205b739d4",
+      "executable": false
+    },
+    {
+      "path": "tests/fixtures/baseline/system_dev.json",
+      "sha256": "b9912341e4f7709905c20eaa4fa5d49fa4f2d5b3ba7bdbe4c095a65a4471100c",
       "executable": false
     },
     {
