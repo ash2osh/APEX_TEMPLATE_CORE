@@ -401,7 +401,7 @@
     },
     {
       "path": "scripts/sync_core.py",
-      "sha256": "77710f8d9bce5d5199580e9342f37ebecb582439b7049f661cefb3fc301cebdb",
+      "sha256": "6e41ceb5f0b04aaa23e5ab34dfd2d867649e692be161ac87c9cdaf77ffe22dbc",
       "executable": true
     },
     {

@@ -577,6 +577,151 @@ class RefreshTests(TempBase):
         self.assertIn("scripts/sync_core.py", out)
 
 
+class AddTests(TempBase):
+    def setUp(self) -> None:
+        super().setUp()
+        self.first, self.second = make_templates(self.base)
+        self.core = make_core(self.base, self.first, self.second)
+
+    def place(self, rel: str, data: bytes = b"new = 1\n", executable: bool = False) -> Path:
+        target = self.core / "files" / rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(data)
+        if POSIX:
+            os.chmod(target, 0o755 if executable else 0o644)
+        return target
+
+    def add(self, *paths: str, extra: tuple[str, ...] = ()) -> tuple[int, str, str]:
+        return run_cli("add", *paths, *extra, "--core", str(self.core))
+
+    def manifest_bytes(self) -> bytes:
+        return (self.core / "core-manifest.json").read_bytes()
+
+    def test_adds_a_placed_file_and_refresh_then_changes_nothing(self) -> None:
+        sources = load_manifest(self.core)["sources"]
+        self.place("scripts/new_tool.py", b"NEW = 1\n")
+        code, out, err = self.add("scripts/new_tool.py")
+        self.assertEqual(code, 0, err)
+        self.assertIn("Added 1 path(s)", out)
+        manifest = load_manifest(self.core)
+        self.assertEqual(manifest["sources"], sources)
+        self.assertIn(
+            {"path": "scripts/new_tool.py", "sha256": hashlib.sha256(b"NEW = 1\n").hexdigest(), "executable": False},
+            manifest["entries"],
+        )
+        paths = [e["path"] for e in manifest["entries"]]
+        self.assertEqual(paths, sorted(paths, key=lambda p: p.encode("utf-8")))
+        code, out, err = run_cli("refresh", "--core", str(self.core))
+        self.assertEqual(code, 0, err)
+        self.assertIn("0 entries changed.", out)
+
+    def test_added_path_is_carried_by_sync_to_a_template(self) -> None:
+        self.place("scripts/new_tool.py", b"NEW = 1\n")
+        self.assertEqual(self.add("scripts/new_tool.py")[0], 0)
+        commit_all(self.core, "add new_tool")
+        target = make_repo(self.base / "target", {"README.md": b"x\n"})
+        self.assertEqual(sync_cli(target, self.core)[0], 0)
+        self.assertEqual((target / "scripts" / "new_tool.py").read_bytes(), b"NEW = 1\n")
+        self.assertEqual(check_cli(target)[0], 0)
+
+    @unittest.skipUnless(POSIX, "the executable bit is read from the file mode on POSIX")
+    def test_records_the_executable_bit_from_the_file_mode(self) -> None:
+        self.place("scripts/run_tool.sh", b"#!/bin/sh\necho run\n", executable=True)
+        code, _, err = self.add("scripts/run_tool.sh")
+        self.assertEqual(code, 0, err)
+        entry = next(e for e in load_manifest(self.core)["entries"] if e["path"] == "scripts/run_tool.sh")
+        self.assertTrue(entry["executable"])
+
+    @unittest.skipUnless(POSIX, "the executable flag must match the file mode on POSIX")
+    def test_executable_flag_that_contradicts_a_posix_file_mode_is_refused(self) -> None:
+        self.place("scripts/plain.py", b"x = 1\n", executable=False)
+        before = self.manifest_bytes()
+        code, _, err = self.add("scripts/plain.py", extra=("--executable",))
+        self.assertEqual(code, 1)
+        self.assertIn("not executable", err)
+        self.assertEqual(self.manifest_bytes(), before)
+
+    @unittest.skipUnless(os.name == "nt", "Windows has no executable bit; the flag decides")
+    def test_windows_takes_the_executable_flag_as_the_mode(self) -> None:
+        self.place("scripts/run_tool.sh", b"#!/bin/sh\n")
+        self.place("scripts/plain.py", b"x = 1\n")
+        self.assertEqual(self.add("scripts/run_tool.sh", extra=("--executable",))[0], 0)
+        self.assertEqual(self.add("scripts/plain.py")[0], 0)
+        entries = {e["path"]: e["executable"] for e in load_manifest(self.core)["entries"]}
+        self.assertTrue(entries["scripts/run_tool.sh"])
+        self.assertFalse(entries["scripts/plain.py"])
+
+    def test_refuses_a_path_the_manifest_already_lists(self) -> None:
+        self.place("scripts/alpha.py", b"changed\n")
+        before = self.manifest_bytes()
+        code, _, err = self.add("scripts/alpha.py")
+        self.assertEqual(code, 1)
+        self.assertIn("already listed", err)
+        self.assertEqual(self.manifest_bytes(), before)
+
+    def test_refuses_unsafe_and_out_of_scope_paths_and_writes_nothing(self) -> None:
+        self.place("scripts/ok.py")
+        self.place("docs/extra.md")
+        before = self.manifest_bytes()
+        for rel in ("../escape.py", "/abs.py", "scripts/../x.py", "scripts/bad:name.py", "scripts/trailing.py.", "scripts/.git/config", "docs/extra.md"):
+            with self.subTest(rel=rel):
+                code, _, err = self.add(rel)
+                self.assertEqual(code, 1, err)
+                self.assertEqual(self.manifest_bytes(), before)
+
+    def test_refuses_a_case_clash_with_a_listed_path(self) -> None:
+        before = self.manifest_bytes()
+        code, _, err = self.add("tools/BETA.py")
+        self.assertEqual(code, 1)
+        self.assertIn("differs only by case from tools/beta.py", err)
+        self.assertEqual(self.manifest_bytes(), before)
+
+    def test_refuses_the_same_path_twice_in_one_call(self) -> None:
+        self.place("scripts/twice.py")
+        before = self.manifest_bytes()
+        code, _, err = self.add("scripts/twice.py", "scripts/twice.py")
+        self.assertEqual(code, 1)
+        self.assertIn("more than once", err)
+        self.assertEqual(self.manifest_bytes(), before)
+
+    def test_missing_file_is_a_usage_error_and_writes_nothing(self) -> None:
+        before = self.manifest_bytes()
+        code, _, err = self.add("scripts/missing.py")
+        self.assertEqual(code, 2)
+        self.assertIn("missing files/scripts/missing.py", err)
+        self.assertEqual(self.manifest_bytes(), before)
+
+    @unittest.skipUnless(symlinks_supported(), "symbolic links need privilege on this system")
+    def test_refuses_a_symbolic_link_and_writes_nothing(self) -> None:
+        target = self.place("scripts/real.py")
+        os.symlink(str(target), self.core / "files" / "scripts" / "linked.py")
+        before = self.manifest_bytes()
+        code, _, err = self.add("scripts/linked.py")
+        self.assertEqual(code, 1)
+        self.assertIn("symbolic link", err)
+        self.assertEqual(self.manifest_bytes(), before)
+
+    def test_unlisted_files_in_files_dir_block_the_add(self) -> None:
+        self.place("scripts/wanted.py")
+        self.place("scripts/stray.py")
+        before = self.manifest_bytes()
+        code, _, err = self.add("scripts/wanted.py")
+        self.assertEqual(code, 2)
+        self.assertIn("scripts/stray.py", err)
+        self.assertEqual(self.manifest_bytes(), before)
+
+    def test_add_needs_a_manifest(self) -> None:
+        (self.core / "core-manifest.json").unlink()
+        self.place("scripts/wanted.py")
+        code, _, err = self.add("scripts/wanted.py")
+        self.assertEqual(code, 2)
+        self.assertIn("run seed first", err)
+
+    def test_add_needs_at_least_one_path(self) -> None:
+        code, _, _ = run_cli("add", "--core", str(self.core))
+        self.assertEqual(code, 2)
+
+
 class CoreRepositoryTests(unittest.TestCase):
     """Integrity of the seeded core in this repository. Runs after `seed` has been committed."""
 
