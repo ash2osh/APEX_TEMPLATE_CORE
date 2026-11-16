@@ -311,7 +311,7 @@
     },
     {
       "path": "scripts/pre_push_check.py",
-      "sha256": "57cc8cb86cf94a4bcc5647850d677c98fa3df0f72e2252086267dad7a39bed57",
+      "sha256": "c770a7ad892f14418c0767fa6e924860ad8e10b6cfceb149c9c378fec430efb4",
       "executable": false
     },
     {
@@ -921,7 +921,7 @@
     },
     {
       "path": "tests/test_pre_push_check.py",
-      "sha256": "407741590e15556062e6e7c3ce66b3cb00058675f77cd122d78d233fab0edea5",
+      "sha256": "f8ce3b11fbbc5c5b10ff8ac4bd8d729323491ae14db0de1b56b9a5cea916a288",
       "executable": false
     },
     {
