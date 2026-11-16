@@ -278,6 +278,8 @@ class ProductionMarkerTests(unittest.TestCase):
             (root / "scripts").mkdir()
             for name in ("check_db_target.sh", "check_db_target.ps1", "load_env.sh", "load_env.ps1"):
                 shutil.copy2(ROOT / "scripts" / name, root / "scripts" / name)
+            # The copied loaders read the release from the template manifest (Phase 2 release switch).
+            shutil.copy2(ROOT / "template-manifest.json", root / "template-manifest.json")
             env_text = (ROOT / ".env.example").read_text(encoding="utf-8")
             (root / ".env").write_text(
                 env_text.replace("TABLES_SQLCL_CONNECTION=docker-demo", f"TABLES_SQLCL_CONNECTION={connection}"),

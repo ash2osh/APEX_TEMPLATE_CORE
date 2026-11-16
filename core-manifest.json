@@ -766,7 +766,7 @@
     },
     {
       "path": "tests/test_browser_mcp.py",
-      "sha256": "6be4a17951ac4b77ef5a965357bc5714d934af84a348f0faa67d7b343fa39963",
+      "sha256": "0efb0152120abcd12e303b3da8c07ed43a250faeff4c0f7e7ea7a1589a26168e",
       "executable": false
     },
     {
@@ -806,7 +806,7 @@
     },
     {
       "path": "tests/test_db_targets.py",
-      "sha256": "0bef79ecca0d0e49a07d527beef28c89ac71e20858ed225d31e864aeacf20a56",
+      "sha256": "afe9f8843b6c90d90eafae36f58ce2e7cc73f5b240993fb9288eaafd106643f4",
       "executable": false
     },
     {
@@ -891,7 +891,7 @@
     },
     {
       "path": "tests/test_doctor_database_info.py",
-      "sha256": "9e99f40d3e2160e753c87f7cad7f9f1a09c6bc2c569c5c3c531f6460fc7a875c",
+      "sha256": "30f2f9b1b263faebf34cd4821d4a787f4158f509d5a00ea91892499bb3a7cbdb",
       "executable": false
     },
     {
@@ -1066,12 +1066,12 @@
     },
     {
       "path": "tests/test_pre_push_check.py",
-      "sha256": "f8ce3b11fbbc5c5b10ff8ac4bd8d729323491ae14db0de1b56b9a5cea916a288",
+      "sha256": "37faa4b9b0bde1be2b61717fe5636806da085622de821c0cd537d441d70fd7e5",
       "executable": false
     },
     {
       "path": "tests/test_publication_identity.py",
-      "sha256": "a390b8fba7c74eedca4e9b76c6f27163a7d228a4fbaef99ac6d99da173e78c34",
+      "sha256": "c04c44ea35e35bf63f25dda606fe01025f6a624dedab7046605effe8c657febe",
       "executable": false
     },
     {
@@ -1086,7 +1086,7 @@
     },
     {
       "path": "tests/test_release_capsule.py",
-      "sha256": "452d6b78563f0c8f08a7a19602772bf826e677f5747435223ab2361835d8cc7a",
+      "sha256": "9ad5fe70757f30ba99de3561bcb80f79b5593fdada058e4076c5961f2aae288f",
       "executable": false
     },
     {
@@ -1111,7 +1111,7 @@
     },
     {
       "path": "tests/test_replace_mirror.py",
-      "sha256": "54cb216e08dea2886bf27f88ae01a2b2292289b2cad00cb71e047c5ce967645d",
+      "sha256": "f77f8cb0ae314ea71527cedd7eb38525ff066322f438374f472a2d92e2553484",
       "executable": false
     },
     {
@@ -1181,7 +1181,7 @@
     },
     {
       "path": "tests/test_workflow_skills.py",
-      "sha256": "75af19c72d55158abfc871a0d18164a2ada5d21a5a447afe2de7e939e318a437",
+      "sha256": "245f5b7a0bcf334195325a93205fff88db5c710eeb5b6837bb5e315ce84a5cdc",
       "executable": false
     },
     {
