@@ -1,0 +1,14 @@
+# Ruff settings copied from APEX_PROJECT_TEMPLATE_26_1/pyproject.toml ([tool.ruff] and [tool.ruff.lint]).
+# This repository holds the shared-file checker and its data; it has no package metadata.
+
+[tool.ruff]
+target-version = "py310"
+line-length = 200
+src = ["scripts", "tools"]
+
+[tool.ruff.lint]
+# F  pyflakes      - undefined names, unused imports
+# E9 syntax errors
+# B  bugbear       - mutable defaults, silent except patterns
+# UP unpyupgrade   - keep the 3.10+ idioms consistent
+select = ["F", "E9", "B", "UP"]
