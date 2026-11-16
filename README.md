@@ -82,6 +82,15 @@ Exit codes for every command: 0 ok; 1 drift found, or refused before any write; 
     comments, function order, equivalent code, extra tests that pass on both sides, and fixtures. Where a difference is a
     refusal, the stricter version is kept only if it passes in both templates. Each batch-1 file is added with `add`.
   - Until the templates take these files through `sync`, `seed` drops them (see workflow step 6).
+  - Deferred (86 of the 104 differing files at the seed). Each group needs a release switch or a behaviour decision:
+    - A uc-apx settings (7): 26.1 keeps `INSTALL_UC_APX` and `UC_APX_SKILLS_AGENT`; 26.2 retires them.
+    - B APEX release identity (19): release checks, defaults and version text (26.1 vs 26.2).
+    - C 26.2 APEX publish and export features (15): app and page locks, verified-source replacement, automations, translations.
+    - D 26.2 migration features (16): schema-2 capsules, rehearsal metrics, rollout writer identity, external synonym evidence.
+    - E SQLcl 26.3 gate (7): 26.2 refuses SQLcl below 26.3.
+    - F Graphify project venv (5): 26.2 uses `.venv-graphify`.
+    - G behaviour decisions (16): the two sides enforce different rules (for example the lock narrowing in `migration_revision.py`).
+    - H test set merges with its script later (1): `tests/test_migration_archive.py`.
 - Integration: after the current template fix branches merge, add `.core-stamp.json` through `sync` and the `check` CI
   step to each template. The template copy of `sync_core.py` arrives with the first sync.
 
