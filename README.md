@@ -10,7 +10,7 @@ downstream projects and template imports see no change.
   included as `files/scripts/sync_core.py`.
 - `core-manifest.json`: `schemaVersion` 1, the source commits (`sources`), and `entries` sorted by path,
   each with `path`, `sha256` and `executable`.
-- `sync_core.py`: the commands `seed`, `refresh`, `sync`, `check` and `diff`. Python 3.10+, standard library only.
+- `sync_core.py`: the commands `seed`, `refresh`, `add`, `sync`, `check` and `diff`. Python 3.10+, standard library only.
 - `tests/test_sync_core.py`: unit tests. They build temporary git repositories and never touch a real template.
 
 ## Phase 1 scope
@@ -48,6 +48,12 @@ in the core because the templates' own CI runs them against the shared scripts.
      --prefix scripts/ --prefix tools/ --prefix tests/
    ```
    `seed` rebuilds `files/` from the templates, so it discards any hand fix that was not also made in a template.
+   It also drops every path added with `add` until both templates hold identical bytes for it (see Phase 2).
+7. Add a path that is not identical in both templates (Phase 2): place the unified file under `files/` at its path, then run
+   `python3 sync_core.py add scripts/new_tool.py` (several paths allowed). `add` appends them to the manifest with their sha256
+   and executable bit. It refuses paths outside `scripts/`, `tools/` and `tests/`, unsafe or symbolic-link paths, paths already
+   listed (or differing only by case), repeated paths, and it refuses when `files/` holds any unlisted file. A missing file is exit 2.
+   On Windows there is no executable bit, so pass `--executable` for a script that must stay executable.
 
 `sync` refuses (exit 1, nothing written) when a target path has uncommitted or untracked changes in the template,
 when a symbolic link sits on a target path, when a target path resolves outside the template, or when a manifest path would leave the template.
@@ -69,9 +75,22 @@ Exit codes for every command: 0 ok; 1 drift found, or refused before any write; 
 
 ## Next phases
 
-- Phase 2: merge the differing files one at a time into the core, behind an `apexRelease` switch, so 26.1 and 26.2
-  keep their current behaviour. Scope (decided 2026-11-16): every differing file under `scripts/`, `tools/` and `tests/`
-  (104 at the 2026-11-16 seed); a test file merges together with the script it covers.
+- Phase 2: merge the differing files into the core, so 26.1 and 26.2 take one version of each from `files/`. Scope
+  (decided 2026-11-16): every differing file under `scripts/`, `tools/` and `tests/` (104 at the 2026-11-16 seed).
+  A file whose difference is release-dependent waits for a release switch.
+  - Batch 1 (`phase2/batch-1`): only differences that are behaviour-neutral for both templates, with no switch: formatting,
+    comments, function order, equivalent code, extra tests that pass on both sides, and fixtures. Where a difference is a
+    refusal, the stricter version is kept only if it passes in both templates. Each batch-1 file is added with `add`.
+  - Until the templates take these files through `sync`, `seed` drops them (see workflow step 6).
+  - Deferred (86 of the 104 differing files at the seed). Each group needs a release switch or a behaviour decision:
+    - A uc-apx settings (7): 26.1 keeps `INSTALL_UC_APX` and `UC_APX_SKILLS_AGENT`; 26.2 retires them.
+    - B APEX release identity (19): release checks, defaults and version text (26.1 vs 26.2).
+    - C 26.2 APEX publish and export features (15): app and page locks, verified-source replacement, automations, translations.
+    - D 26.2 migration features (16): schema-2 capsules, rehearsal metrics, rollout writer identity, external synonym evidence.
+    - E SQLcl 26.3 gate (7): 26.2 refuses SQLcl below 26.3.
+    - F Graphify project venv (5): 26.2 uses `.venv-graphify`.
+    - G behaviour decisions (16): the two sides enforce different rules (for example the lock narrowing in `migration_revision.py`).
+    - H test set merges with its script later (1): `tests/test_migration_archive.py`.
 - Integration: after the current template fix branches merge, add `.core-stamp.json` through `sync` and the `check` CI
   step to each template. The template copy of `sync_core.py` arrives with the first sync.
 
