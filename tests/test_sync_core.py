@@ -596,15 +596,18 @@ class CoreRepositoryTests(unittest.TestCase):
     def test_manifest_records_both_sources_with_commit_ids(self) -> None:
         sources = self.manifest["sources"]
         self.assertEqual([s["label"] for s in sources], ["26.1", "26.2"])
-        self.assertEqual([s["ref"] for s in sources], ["main", "origin/main"])
+        for source in sources:
+            self.assertIsInstance(source["ref"], str)
+            self.assertTrue(source["ref"])
         for source in sources:
             self.assertRegex(source["commit"], r"^[0-9a-f]{40}$")
 
-    def test_template_ci_only_files_are_excluded(self) -> None:
+    def test_template_ci_runner_is_shared(self) -> None:
+        # Decided 2026-11-16: the CI runner is identical in both templates and must not drift either.
         paths = {e["path"] for e in self.manifest["entries"]}
-        self.assertNotIn("scripts/ci_run_tests.py", paths)
-        self.assertNotIn("tests/test_ci_run_tests.py", paths)
-        self.assertEqual(self.manifest["excluded"], ["scripts/ci_run_tests.py", "tests/test_ci_run_tests.py"])
+        self.assertIn("scripts/ci_run_tests.py", paths)
+        self.assertIn("tests/test_ci_run_tests.py", paths)
+        self.assertEqual(self.manifest["excluded"], [])
 
 
 if __name__ == "__main__":

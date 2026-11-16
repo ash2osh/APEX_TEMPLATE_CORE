@@ -15,22 +15,19 @@ downstream projects and template imports see no change.
 
 ## Phase 1 scope
 
-- Seeded from 26.1 `main` (`6c3158e`) and 26.2 `origin/main` (`d9e26a2`).
+- Seeded on 2026-11-16 from 26.1 `origin/main` (`98af369`) and 26.2 `origin/main` (`d07e7d2`), after both
+  templates merged that day's review fixes.
 - Selection: paths under `scripts/`, `tools/` and `tests/` whose blob and executable bit are identical in both templates.
-  That is 199 files, plus `scripts/sync_core.py` (core-owned, copied from the core root) = 200 entries.
+  That is 202 files, plus `scripts/sync_core.py` (core-owned, copied from the core root) = 203 entries.
 - Not in the core, so they stay per template:
-  - 105 differing files (52 in `scripts/` and `tools/`, 53 in `tests/`).
+  - 104 differing files (Phase 2).
   - 110 one-sided files (2 only in 26.1, 108 only in 26.2).
 
 ### Exclusions
 
-| Path | Reason |
-| --- | --- |
-| `scripts/ci_run_tests.py` | Template CI runner. Only the template's GitHub workflow calls it, and downstream projects remove `.github`. |
-| `tests/test_ci_run_tests.py` | Tests that runner. Excluded with it so the pair stays together. |
-
-The downstream cleanup also removes all of `tests/`. These tests stay in the core because the templates'
-own CI runs them against the shared scripts. Whether `tests/` belongs in Phase 2 is an open decision.
+None. The template CI runner (`scripts/ci_run_tests.py` and its test) is shared too, because it is identical in
+both templates and should not drift. The downstream cleanup removes `tests/` and `.github/`; the shared tests stay
+in the core because the templates' own CI runs them against the shared scripts.
 
 ## Workflow
 
@@ -48,8 +45,7 @@ own CI runs them against the shared scripts. Whether `tests/` belongs in Phase 2
    python3 sync_core.py seed \
      --template 26.1=/path/to/APEX_PROJECT_TEMPLATE_26_1@main \
      --template 26.2=/path/to/APEX_PROJECT_TEMPLATE_TEAM@origin/main \
-     --prefix scripts/ --prefix tools/ --prefix tests/ \
-     --exclude scripts/ci_run_tests.py --exclude tests/test_ci_run_tests.py
+     --prefix scripts/ --prefix tools/ --prefix tests/
    ```
    `seed` rebuilds `files/` from the templates, so it discards any hand fix that was not also made in a template.
 
@@ -76,8 +72,6 @@ Exit codes for every command: 0 ok; 1 drift found, or refused before any write; 
 - Phase 2: merge the differing files one at a time into the core, behind an `apexRelease` switch, so 26.1 and 26.2
   keep their current behaviour. Scope (decided 2026-11-16): the 52 differing `scripts/` and `tools/` files and the 53
   differing `tests/` files; a test file merges together with the script it covers.
-- Reseed after the 2026-11-16 template fix branches merge, and include `scripts/ci_run_tests.py` and
-  `tests/test_ci_run_tests.py` (identical in both templates; the template CI runner should not drift either).
 - Integration: after the current template fix branches merge, add `.core-stamp.json` through `sync` and the `check` CI
   step to each template. The template copy of `sync_core.py` arrives with the first sync.
 
