@@ -235,6 +235,21 @@
       "executable": false
     },
     {
+      "path": "scripts/load_env.ps1",
+      "sha256": "5069f4d711f2b31533086dc55ca12a2b9e84192f70241c2f7f4f02f3bcc60404",
+      "executable": false
+    },
+    {
+      "path": "scripts/load_env.sh",
+      "sha256": "3e43bda3e94e2f789136bc2b3b96b848f5a72796f624057d37169ac367aef1a5",
+      "executable": true
+    },
+    {
+      "path": "scripts/local_config.py",
+      "sha256": "aa097412c1320c099dab66d74de5ee3185e950e9ca41b9e205957979658b5717",
+      "executable": false
+    },
+    {
       "path": "scripts/lookup_app_schema.sql",
       "sha256": "981f03f1ddc6cff70e68dbb9c60c6c3450ed94a75083bfc865a2e8ac5ca85078",
       "executable": false
@@ -482,6 +497,11 @@
     {
       "path": "scripts/windows_job.py",
       "sha256": "e736fffaef613313c830a4ccd931e2540fe70c819050a618f85b7b54ab966587",
+      "executable": false
+    },
+    {
+      "path": "scripts/workflow_skills.py",
+      "sha256": "a58ae44474b588cf0152e9f334ddb45a4e629d463b3f27bea2346a69dbf79b6b",
       "executable": false
     },
     {
@@ -845,6 +865,11 @@
       "executable": false
     },
     {
+      "path": "tests/test_env_schema_lists.py",
+      "sha256": "888001477061c4a4c73c3a8e50c93a911760eb963c60dcb3d8ebbbce647dc787",
+      "executable": false
+    },
+    {
       "path": "tests/test_fake_sqlcl.py",
       "sha256": "da2c95d469fe884c68027b14edc22f7277f83f568a45f5e68b483f47cffe4414",
       "executable": false
@@ -932,6 +957,16 @@
     {
       "path": "tests/test_live_baseline.py",
       "sha256": "75cc640aed4cb7933e44a06319de6d1e3655f98631acdba7ac77c9485baa4696",
+      "executable": false
+    },
+    {
+      "path": "tests/test_live_feature_release.py",
+      "sha256": "63b8872abfff7b4913d1f0b6c13c0c763426511067c7270a29136a4bd6cb81b4",
+      "executable": false
+    },
+    {
+      "path": "tests/test_local_config.py",
+      "sha256": "bdb3e95d53684ae86f42735e480c914adb2db05a8bee308f2385386133cdbc65",
       "executable": false
     },
     {
