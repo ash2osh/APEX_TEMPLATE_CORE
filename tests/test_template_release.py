@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -12,7 +13,13 @@ CORE = Path(__file__).resolve().parents[1]
 _SPEC = importlib.util.spec_from_file_location("template_release", CORE / "files" / "scripts" / "template_release.py")
 assert _SPEC is not None and _SPEC.loader is not None
 template_release = importlib.util.module_from_spec(_SPEC)
-_SPEC.loader.exec_module(template_release)
+# Load without writing __pycache__ into files/: the core integrity test lists every file under files/.
+_WRITE_BYTECODE = sys.dont_write_bytecode
+sys.dont_write_bytecode = True
+try:
+    _SPEC.loader.exec_module(template_release)
+finally:
+    sys.dont_write_bytecode = _WRITE_BYTECODE
 
 
 class ReadTemplateReleaseTests(unittest.TestCase):
