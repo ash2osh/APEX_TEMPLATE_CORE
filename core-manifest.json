@@ -435,6 +435,16 @@
       "executable": true
     },
     {
+      "path": "scripts/template_release.ps1",
+      "sha256": "2e774825207a6efc9e1ba098ec409bfb7e3bc428b2016fe300e46acf1ef0b97f",
+      "executable": false
+    },
+    {
+      "path": "scripts/template_release.py",
+      "sha256": "60aed5995317194a1c5ac304e1181aa1a82971ce35898a187228bc5831481118",
+      "executable": false
+    },
+    {
       "path": "scripts/terminal_confirm.py",
       "sha256": "443da6eb37c2b2bfb51f065d07d05e076c78fc86ac598ac45b082e319e69805a",
       "executable": false
