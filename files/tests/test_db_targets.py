@@ -276,7 +276,8 @@ class ProductionMarkerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             (root / "scripts").mkdir()
-            for name in ("check_db_target.sh", "check_db_target.ps1", "load_env.sh", "load_env.ps1"):
+            for name in ("check_db_target.sh", "check_db_target.ps1", "load_env.sh", "load_env.ps1",
+                         "template_release.ps1"):
                 shutil.copy2(ROOT / "scripts" / name, root / "scripts" / name)
             # The copied loaders read the release from the template manifest (Phase 2 release switch).
             shutil.copy2(ROOT / "template-manifest.json", root / "template-manifest.json")
