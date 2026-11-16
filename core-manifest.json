@@ -690,6 +690,11 @@
       "executable": false
     },
     {
+      "path": "tests/test_baseline_generated_sql.py",
+      "sha256": "21dc139e03dfb886e8562cea3b42765b80006eff316d048d506fbe6b7ff2e62f",
+      "executable": false
+    },
+    {
       "path": "tests/test_baseline_settings.py",
       "sha256": "0f714bac973a896e806dcd1880738d0fc948655506c812cc8908e0079b70d4fb",
       "executable": false
@@ -727,6 +732,11 @@
     {
       "path": "tests/test_compare_schema_cli.py",
       "sha256": "bec5ebfc4a18fb8307ae3edc2f3301a7eeeea404220ecac0a30d3e79f7867c18",
+      "executable": false
+    },
+    {
+      "path": "tests/test_db_targets.py",
+      "sha256": "0bef79ecca0d0e49a07d527beef28c89ac71e20858ed225d31e864aeacf20a56",
       "executable": false
     },
     {
@@ -802,6 +812,11 @@
     {
       "path": "tests/test_dev_test_upgrade_review.py",
       "sha256": "4dfc655a79f543f41c710fd55ec8d6a1e94c2341c934131d4cf9e9343b33a7bf",
+      "executable": false
+    },
+    {
+      "path": "tests/test_directory_install.py",
+      "sha256": "a9711a1dc1b3bdf5b2e84b9577d6c4155a3bd0d67c3bef043ffddce8d04b01d6",
       "executable": false
     },
     {
@@ -900,6 +915,11 @@
       "executable": false
     },
     {
+      "path": "tests/test_login_differs_from_schema.py",
+      "sha256": "da4fd79bfa3e14778a25adee06b1394a36b93b599ba1d90f78c008915e418808",
+      "executable": false
+    },
+    {
       "path": "tests/test_migration_attempts.py",
       "sha256": "6adc4f6b0199fcc282c33924d8424c9eab37f9f9393c1ca814f89e18280cc952",
       "executable": false
@@ -907,6 +927,11 @@
     {
       "path": "tests/test_migration_diff.py",
       "sha256": "018a5653cc7c2f91eeadbe0b5fa1459d119902d4fd0dbc56c0f4ac30b07fcbff",
+      "executable": false
+    },
+    {
+      "path": "tests/test_migration_plan.py",
+      "sha256": "67f4e6cbb577442ed32e0f07c1e8dfb6642addd5bd3b117672ccf01b0468a14c",
       "executable": false
     },
     {
@@ -960,6 +985,11 @@
       "executable": false
     },
     {
+      "path": "tests/test_publication_identity.py",
+      "sha256": "a390b8fba7c74eedca4e9b76c6f27163a7d228a4fbaef99ac6d99da173e78c34",
+      "executable": false
+    },
+    {
       "path": "tests/test_read_only_query.py",
       "sha256": "a4b1a3449eeef28ac243cbc98b47db486c40cbee85abaf25c906576b08931407",
       "executable": false
@@ -1010,6 +1040,11 @@
       "executable": false
     },
     {
+      "path": "tests/test_sql_driver_contracts.py",
+      "sha256": "55462b2a24a2a97701dc7416d1f3af69f10bab4d818fb9ccde6e4b4d09b7fc95",
+      "executable": false
+    },
+    {
       "path": "tests/test_sqlcl_session.py",
       "sha256": "4ee90a8a8a5fc59753a3bf8c59894fc1251b3022be9b170de9a54d4f8bd771f1",
       "executable": false
@@ -1017,6 +1052,11 @@
     {
       "path": "tests/test_sqlcl_transcript.py",
       "sha256": "3f4d10322fa6fc9ad01945d5e6294613c145cb65a77465fac3d4428d17871b4c",
+      "executable": false
+    },
+    {
+      "path": "tests/test_sqlcl_transport.py",
+      "sha256": "622902d954d3bd5f1240262c9ee5bffa4621a75f5b61a6a4132636a352c61230",
       "executable": false
     },
     {
@@ -1042,6 +1082,11 @@
     {
       "path": "tests/test_validate_app_source.py",
       "sha256": "23eb8da84b2c8f464ddb38ad87d019d6679e1f916083f3b048e789a11a238168",
+      "executable": false
+    },
+    {
+      "path": "tests/test_validate_migration.py",
+      "sha256": "0bed66fc30db96c46fe01992af5e294e68c6712d2be66e3e0e9f6259a69da030",
       "executable": false
     },
     {
