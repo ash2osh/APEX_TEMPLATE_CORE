@@ -40,6 +40,11 @@
       "executable": false
     },
     {
+      "path": "scripts/baseline_bundles.py",
+      "sha256": "6ed58949954b1e2b3f9b52023cfafddf7a8753c0b69174ee1445b697047f4fe9",
+      "executable": false
+    },
+    {
       "path": "scripts/baseline_data.py",
       "sha256": "5c3c98dbd0b4b8e8e46e327117aedf8156e9fda134c3425c86f254a30b5783e1",
       "executable": false
@@ -160,6 +165,11 @@
       "executable": false
     },
     {
+      "path": "scripts/directory_install.py",
+      "sha256": "4b6012205076e3c26f09e0138d2edf3e08090287a9744cbcab40fa0dc68a4294",
+      "executable": false
+    },
+    {
       "path": "scripts/doctor_database_info.sql",
       "sha256": "d1f01c6d6412a02a563c655d52c600e80884605f4a6e21362c7f2609cdf4f9d0",
       "executable": false
@@ -230,6 +240,11 @@
       "executable": false
     },
     {
+      "path": "scripts/migrate.py",
+      "sha256": "f2cf3e8a505aecb304521018ca0b51a4bcf9d212f662dfcdfd1285c7406dc1f9",
+      "executable": false
+    },
+    {
       "path": "scripts/migrate.sh",
       "sha256": "09e88f690a1ab8931a81c191c647e78f4e1db818930433c13a58b29e9fe3bbb9",
       "executable": true
@@ -237,6 +252,16 @@
     {
       "path": "scripts/migrate.sql",
       "sha256": "1bd6eef21af19edec63f295b3f202b75f18c2b633378cbb54385faa8dc501e87",
+      "executable": false
+    },
+    {
+      "path": "scripts/migration_archive.py",
+      "sha256": "86f9b0e0b94f7cea725c57f4d18f35c93713268326952b9a22f00d4256c4df71",
+      "executable": false
+    },
+    {
+      "path": "scripts/migration_attempts.py",
+      "sha256": "b64f080a3fac24cdbc93d39a9ccc36ba0e3f1354658cb98af0f307c33035fd43",
       "executable": false
     },
     {
@@ -360,6 +385,11 @@
       "executable": false
     },
     {
+      "path": "scripts/rollout.sh",
+      "sha256": "30350f04344ffde92e6ed17453e2ef1561de3a67650b089e06d0a21a2f41b59d",
+      "executable": true
+    },
+    {
       "path": "scripts/schema_catalog.py",
       "sha256": "0ca633cad64d1da28a52180042648c22d655ada7201cf1b2d5f7c9df05d5ba95",
       "executable": false
@@ -407,6 +437,11 @@
     {
       "path": "scripts/terminal_confirm.py",
       "sha256": "443da6eb37c2b2bfb51f065d07d05e076c78fc86ac598ac45b082e319e69805a",
+      "executable": false
+    },
+    {
+      "path": "scripts/validate_migration.py",
+      "sha256": "da6440fe45704e9b26776a59b27da5d7cb239602d6eb3d0ca6e4f5d87a553dc0",
       "executable": false
     },
     {
