@@ -100,6 +100,11 @@
       "executable": false
     },
     {
+      "path": "scripts/compare_schema.py",
+      "sha256": "927d201577e41345f6d37ad98edad54a363f9ee6be77930a6ce5cb19a05ff333",
+      "executable": false
+    },
+    {
       "path": "scripts/compare_schema.sh",
       "sha256": "110ef423c8c7ace7e0b94c12a7b8ebbd7658d4b46db81000b9ee07cd4094eed1",
       "executable": true
@@ -232,6 +237,11 @@
     {
       "path": "scripts/feature_sources.py",
       "sha256": "5d5d6a3747f220a8dd1406efc0ddea51a43fd97bb49566b25568f76d574f4c35",
+      "executable": false
+    },
+    {
+      "path": "scripts/invoke_sqlcl.ps1",
+      "sha256": "5034bc6a67a7ee920f5ef2fb595ae178e9765668dc20e7932c2034adc6e66dfc",
       "executable": false
     },
     {
@@ -420,6 +430,11 @@
       "executable": false
     },
     {
+      "path": "scripts/sqlcl_safe.sh",
+      "sha256": "7035e49583279cf1746cfe236d2e16aaba302fc6c9adfa30971a8c1141a61d41",
+      "executable": true
+    },
+    {
       "path": "scripts/sqlcl_session.py",
       "sha256": "4c7f8deaad52026e5830f521e7eb4e33e1ce12763301a8cf45383d27c637c64c",
       "executable": false
@@ -522,6 +537,11 @@
     {
       "path": "tests/_windows_lf.py",
       "sha256": "4e116faa918fa2c7793217cb62d3efb23c037f06fbfba1ea14740469002aa9de",
+      "executable": false
+    },
+    {
+      "path": "tests/fake_ords_sql.py",
+      "sha256": "8282e2f3b7cda063e3ee411049d9c485cb26622a3103f5fa36ddb4c73fb2c0ff",
       "executable": false
     },
     {
@@ -730,6 +750,11 @@
       "executable": false
     },
     {
+      "path": "tests/test_backup_ords_cli.py",
+      "sha256": "d2b02190165535cf9913b548441c029435571e90866d4e92c09758ad245c1dee",
+      "executable": false
+    },
+    {
       "path": "tests/test_baseline_generated_sql.py",
       "sha256": "21dc139e03dfb886e8562cea3b42765b80006eff316d048d506fbe6b7ff2e62f",
       "executable": false
@@ -767,6 +792,11 @@
     {
       "path": "tests/test_ci_run_tests.py",
       "sha256": "4e08ab985383daa65743b7e52c65fb42a3c5d76041e2fbc67dac6bbf9807120f",
+      "executable": false
+    },
+    {
+      "path": "tests/test_compare_schema.py",
+      "sha256": "4bfe3cb1d828041db2193d546ba385f2c1981de6f3fc7837e3e906bc842ad663",
       "executable": false
     },
     {
