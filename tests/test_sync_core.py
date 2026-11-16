@@ -643,9 +643,10 @@ class AddTests(TempBase):
 
     @unittest.skipUnless(os.name == "nt", "Windows has no executable bit; the flag decides")
     def test_windows_takes_the_executable_flag_as_the_mode(self) -> None:
+        # add refuses while files/ holds an unlisted file, so place and add one file at a time.
         self.place("scripts/run_tool.sh", b"#!/bin/sh\n")
-        self.place("scripts/plain.py", b"x = 1\n")
         self.assertEqual(self.add("scripts/run_tool.sh", extra=("--executable",))[0], 0)
+        self.place("scripts/plain.py", b"x = 1\n")
         self.assertEqual(self.add("scripts/plain.py")[0], 0)
         entries = {e["path"]: e["executable"] for e in load_manifest(self.core)["entries"]}
         self.assertTrue(entries["scripts/run_tool.sh"])
