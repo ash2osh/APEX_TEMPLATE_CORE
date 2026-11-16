@@ -87,6 +87,11 @@ def make_repo(path: Path, files: dict[str, bytes | Link], executable: frozenset[
     path.mkdir(parents=True)
     git(path, "init", "-q", "-b", "main")
     write_tree(path, files, executable)
+    git(path, "add", "-A")
+    # Git on Windows does not record a chmod, so set the executable mode in the index directly.
+    for rel in sorted(executable):
+        if rel in files and not isinstance(files[rel], Link):
+            git(path, "update-index", "--chmod=+x", "--", rel)
     commit_all(path, "initial")
     return path
 
