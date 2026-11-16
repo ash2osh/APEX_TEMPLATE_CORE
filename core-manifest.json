@@ -386,7 +386,7 @@
     },
     {
       "path": "scripts/rollout.sh",
-      "sha256": "30350f04344ffde92e6ed17453e2ef1561de3a67650b089e06d0a21a2f41b59d",
+      "sha256": "571de0e09377478997ce8209bed8d77621fa70bd413eacb8634a9ac3d63120c3",
       "executable": true
     },
     {
