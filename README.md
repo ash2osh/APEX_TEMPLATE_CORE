@@ -74,7 +74,10 @@ Exit codes for every command: 0 ok; 1 drift found, or refused before any write; 
 ## Next phases
 
 - Phase 2: merge the differing files one at a time into the core, behind an `apexRelease` switch, so 26.1 and 26.2
-  keep their current behaviour. Decide first whether the 53 differing `tests/` files are in scope.
+  keep their current behaviour. Scope (decided 2026-11-16): the 52 differing `scripts/` and `tools/` files and the 53
+  differing `tests/` files; a test file merges together with the script it covers.
+- Reseed after the 2026-11-16 template fix branches merge, and include `scripts/ci_run_tests.py` and
+  `tests/test_ci_run_tests.py` (identical in both templates; the template CI runner should not drift either).
 - Integration: after the current template fix branches merge, add `.core-stamp.json` through `sync` and the `check` CI
   step to each template. The template copy of `sync_core.py` arrives with the first sync.
 
