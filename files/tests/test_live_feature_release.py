@@ -140,10 +140,10 @@ def _fixture_identity(connection: str, workdir: str, env: dict, expected: str | 
     from scripts.migrate import IDENTITY_SQL_EXPRESSIONS
 
     reads = "\n".join(
-        f"SELECT 'FIXTURE_ID:{field}:' || ({expression}) FROM DUAL;"
+        f"  DBMS_OUTPUT.PUT_LINE('FIXTURE_ID:{field}:' || ({expression}));"
         for field, expression in IDENTITY_SQL_EXPRESSIONS.items()
     )
-    output = _sqlcl(connection, "set heading off feedback off pagesize 0 linesize 32767\n" + reads, workdir, env)
+    output = _sqlcl(connection, f"set serveroutput on size unlimited\nBEGIN\n{reads}\nEND;\n/\n", workdir, env)
     identity = dict(re.findall(r"^\s*FIXTURE_ID:([a-z_]+):([^\r\n]+)", output, re.MULTILINE))
     identity = {field: value.strip() for field, value in identity.items()}
     if identity.keys() != IDENTITY_SQL_EXPRESSIONS.keys() or not all(identity.values()):

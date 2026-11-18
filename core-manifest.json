@@ -101,7 +101,7 @@
     },
     {
       "path": "scripts/compare_schema.py",
-      "sha256": "927d201577e41345f6d37ad98edad54a363f9ee6be77930a6ce5cb19a05ff333",
+      "sha256": "f0e982612d9cb068c031687a158d2e5b85110d3d7debe0d080ff3d6ff5885f78",
       "executable": false
     },
     {
@@ -1006,7 +1006,7 @@
     },
     {
       "path": "tests/test_live_feature_release.py",
-      "sha256": "34f7bc46a943c0062e94a63042a3c1bd967977cd83706dbc7549220462bee96c",
+      "sha256": "a958157e9bb096564ed1aafb67257df02075077f3fbf13e3aae99ca02b452fbd",
       "executable": false
     },
     {
