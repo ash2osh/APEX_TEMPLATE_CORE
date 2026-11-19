@@ -440,6 +440,11 @@
       "executable": false
     },
     {
+      "path": "scripts/show_targets.py",
+      "sha256": "4ab45d34a3bf84e0767912490fca7cb6c2d37a35c6fffc9934c0a5e865863db2",
+      "executable": false
+    },
+    {
       "path": "scripts/sqlcl_safe.sh",
       "sha256": "7035e49583279cf1746cfe236d2e16aaba302fc6c9adfa30971a8c1141a61d41",
       "executable": true
@@ -1137,6 +1142,11 @@
     {
       "path": "tests/test_schema_normalization.py",
       "sha256": "d97f06ec753544437e2d7ffe852ef5d826a738fa1273149375fcf96324acf4fd",
+      "executable": false
+    },
+    {
+      "path": "tests/test_show_targets.py",
+      "sha256": "751ae2e76fceba5548573e1f40fe2f64ba0e04bad4ca2666ba4b0a10be631d4a",
       "executable": false
     },
     {
