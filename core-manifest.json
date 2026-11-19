@@ -541,7 +541,7 @@
     },
     {
       "path": "tests/_test_subprocess_safety.py",
-      "sha256": "f401077bf34051195ced89548df5b9045c09cf331c18b6e5b1a1316ec7dc58f3",
+      "sha256": "b48b97f875de8d87ffe2aa318669386fd3cb6020410cb9edf19f1639c714be4d",
       "executable": false
     },
     {
@@ -1167,6 +1167,11 @@
     {
       "path": "tests/test_subprocess_defaults.py",
       "sha256": "f0e2c6288f144f38da3da24f71d99304289b211ccac1c1ec7b2dab353c295888",
+      "executable": false
+    },
+    {
+      "path": "tests/test_subprocess_safety_helpers.py",
+      "sha256": "6698b0a60bf80ba3909b3c4d8f52d91c432dc6ce6f0b0fbc0e42168aec12aeab",
       "executable": false
     },
     {
