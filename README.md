@@ -33,7 +33,7 @@ in the core because the templates' own CI runs them against the shared scripts.
 
 1. Fix in the core. Edit the file under `files/` (or `sync_core.py` at the root), then run
    `python3 sync_core.py refresh`. It re-hashes `files/` into the manifest and re-copies the checker. It adds and removes no paths.
-2. Test: `python3 -m unittest discover -s tests -v` and `ruff check sync_core.py tests/`.
+2. Test: `python3 -m unittest discover -s tests -v` and `ruff check sync_core.py tests/ files/`.
 3. Commit in this repository. `sync` refuses a core with uncommitted changes.
 4. Sync into each template, on a branch in that template:
    `python3 /path/to/APEX_TEMPLATE_CORE/sync_core.py sync /path/to/template --core /path/to/APEX_TEMPLATE_CORE`.
