@@ -21,7 +21,7 @@
   "entries": [
     {
       "path": "scripts/backup_db.ps1",
-      "sha256": "fb059db5e8a2c37bacc16b456857ab8c8a514ce3297484952f6f94fe8755f9d5",
+      "sha256": "a94fb8fb00d0dc3cae533f3a2532176a21af4c7f5ce0086bc43d5a9e50bc5dff",
       "executable": false
     },
     {
