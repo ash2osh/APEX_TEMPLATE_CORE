@@ -106,7 +106,7 @@
     },
     {
       "path": "scripts/compare_schema.py",
-      "sha256": "f0e982612d9cb068c031687a158d2e5b85110d3d7debe0d080ff3d6ff5885f78",
+      "sha256": "914ead9c10ba5acf06cb9af5e3a4a4fa64aeb68860a53e729f3ccab1a4e90e28",
       "executable": false
     },
     {
