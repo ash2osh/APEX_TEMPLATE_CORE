@@ -326,7 +326,7 @@
     },
     {
       "path": "scripts/new_migration.py",
-      "sha256": "99cb0e836726e0520dbfee7897da333fdcb35c2181bf82e335a17f4620967f88",
+      "sha256": "d055adf3f2038bf07ccc7489276fc16a3570aaf7d9694fe6c080553465ed062d",
       "executable": false
     },
     {
@@ -1056,7 +1056,7 @@
     },
     {
       "path": "tests/test_new_migration.py",
-      "sha256": "8facd1b8950ffc3c446571df5aa1cb48120e3d4ef4c6ce4efc1dad1205dbd742",
+      "sha256": "5987afa1c4159523e2f3cf805a81ba88459e7fd199301e6440c13c6994c95eae",
       "executable": false
     },
     {
