@@ -266,7 +266,7 @@
     },
     {
       "path": "scripts/live_verify.py",
-      "sha256": "42a198922d88a083d9f38146b6ab5c2c627e26fdb5c38a3b33c1c8f74c2a8b42",
+      "sha256": "e133fdf59b9fcfdb773b1ee97296de8afe5cb94e3f12aef50a0a25c4b9f357f3",
       "executable": false
     },
     {
@@ -1041,7 +1041,7 @@
     },
     {
       "path": "tests/test_live_verify.py",
-      "sha256": "5d468f4f1dfb3e9b5b31c50690881e36bbf245eabb389dbb22d12a4b10231c06",
+      "sha256": "249fb3f2ce87ffe5f0df68814896a6568b4b1b2b7ae2e5dd30c52a38b3b13819",
       "executable": false
     },
     {
