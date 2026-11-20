@@ -30,7 +30,7 @@ jobs:
       - name: Ruff
         run: |
           python -m pip install --quiet 'ruff>=0.5'
-          ruff check sync_core.py tests/
+          ruff check sync_core.py tests/ files/
       - name: Manifest matches files/
         shell: bash
         run: |
