@@ -541,7 +541,7 @@
     },
     {
       "path": "scripts/windows_check.ps1",
-      "sha256": "64bc26f2900f62b1173e5b10f6fd89e6def624125673bef58bd89ed790898dea",
+      "sha256": "e1aa07e489105bad6b47c5c920f2f7e1b70512cd8c8aa04e79d1d378a5d144b0",
       "executable": false
     },
     {
@@ -1261,7 +1261,7 @@
     },
     {
       "path": "tests/test_windows_check.py",
-      "sha256": "209db9d1b6aeef26cd986854d7fddc8d7b65c4bd99a98de25f515e90effab8b5",
+      "sha256": "994986ec3e5aa9fd94cc3382a3610ebfd8c93cd043a761df61637b2300f33fde",
       "executable": false
     },
     {
