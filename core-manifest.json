@@ -1096,7 +1096,7 @@
     },
     {
       "path": "tests/test_migration_schema_folders.py",
-      "sha256": "f5bca10040fb70e8a13cebd7dd49a6b184fe00b657edc9d41cfc57da7b728ee8",
+      "sha256": "1bc04c06cd2ab4481c88acde22f96af12cf4742ca7b8eadc2166a692717fe303",
       "executable": false
     },
     {
