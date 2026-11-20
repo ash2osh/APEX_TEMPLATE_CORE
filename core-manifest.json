@@ -26,7 +26,7 @@
     },
     {
       "path": "scripts/backup_db.sh",
-      "sha256": "ffc837c6bc70e5a9d4b7a7a800a51a4375c45403b71ca334eae24e8080ea340c",
+      "sha256": "3b3507c835d956c8cadf110c0ba5384603e8ae2754f295953a1a5808e29c55ae",
       "executable": true
     },
     {
@@ -1266,7 +1266,7 @@
     },
     {
       "path": "tests/test_windows_check.py",
-      "sha256": "556dcb4efb0883994c1db9e6499d106db45a4cf304ebfe7210f1a296fab3af74",
+      "sha256": "d84f33f4ae4e74748193ae3d9ccad77d3cec9a512723b5b03f1cfc612a26d2ed",
       "executable": false
     },
     {
