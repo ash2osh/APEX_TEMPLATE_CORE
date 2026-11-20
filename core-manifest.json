@@ -386,7 +386,7 @@
     },
     {
       "path": "scripts/pre_push_check.py",
-      "sha256": "1ee3aa59e58700fd9904ad4db887f64dc5d2a38bcad40498e6dd1f9620d532d6",
+      "sha256": "af5f2748cec010cff8213acbed65d90416bc290de88c59c75794a28b2291179b",
       "executable": false
     },
     {
@@ -566,7 +566,7 @@
     },
     {
       "path": "tests/_test_subprocess_safety.py",
-      "sha256": "b48b97f875de8d87ffe2aa318669386fd3cb6020410cb9edf19f1639c714be4d",
+      "sha256": "a1703fa24020f86ecc10c0ff25d5ab1e6eb038f2ca003c51f15a6fdf0927b274",
       "executable": false
     },
     {
@@ -1131,7 +1131,7 @@
     },
     {
       "path": "tests/test_pre_push_check.py",
-      "sha256": "a13c52cae91cc323b5a19878bb7645950f157272cffe432fb8979bd716b81736",
+      "sha256": "6572af57c289fcfe9a5e3944aaed4358ba88a4922081711e3da8fe195bcbbea4",
       "executable": false
     },
     {
@@ -1237,6 +1237,11 @@
     {
       "path": "tests/test_terminal_confirm.py",
       "sha256": "32fab3ebf6cb98f8435efdc49224f6031bb65d5310cc86dc98513a11375917fc",
+      "executable": false
+    },
+    {
+      "path": "tests/test_test_subprocess_safety.py",
+      "sha256": "57546db5ab3463de7e77338dbbdd78374dfee5df82de8cf3df491811fd43e073",
       "executable": false
     },
     {
