@@ -466,7 +466,7 @@
     },
     {
       "path": "scripts/sqlcl_pool.py",
-      "sha256": "bf25ba89318024e480206539105bed8b4357a097709e1d7dc082325981b3bceb",
+      "sha256": "5628a24d75e2b2a68c768326b31186500d27627bedc148873ed3cae2e3c08819",
       "executable": false
     },
     {
@@ -1241,7 +1241,7 @@
     },
     {
       "path": "tests/test_sqlcl_pool.py",
-      "sha256": "923a1eb1578fcaad3bc9271bc69757eab1db96c68faa0e6c86308df6ec656ca0",
+      "sha256": "c3f5ea10ff6f312f14869ea786729c89e81c2b6ff21b7799cefcb55842e660df",
       "executable": false
     },
     {
