@@ -405,6 +405,11 @@
       "executable": false
     },
     {
+      "path": "scripts/rehearsal_reset.py",
+      "sha256": "de37a7af888cc264e8b93ae9d30c8d220a9f7e8e6aed91bb24d3cb081f2d33ac",
+      "executable": false
+    },
+    {
       "path": "scripts/release_capsule.py",
       "sha256": "c395c27b33f1e7edb5d78c952e04d7717bdc464721b0bd6352e2bc8a1e8bd5e0",
       "executable": false
@@ -1182,6 +1187,11 @@
     {
       "path": "tests/test_readonly_scratch.py",
       "sha256": "d66522c3bb2e96b62c883116974e0937bb54b336eebc9b95708788aee748976b",
+      "executable": false
+    },
+    {
+      "path": "tests/test_rehearsal_reset.py",
+      "sha256": "d0aa4e09338f5ac74d1755c26994f81b1faed448d549b105a94809232f85b573",
       "executable": false
     },
     {
