@@ -34,7 +34,7 @@ from .db_targets import (
 )
 from .local_config import ConfigError, read_project_env
 from .path_utils import PathReparseError, relative_to_root
-from .sqlcl_session import SqlclError, SqlclTimeout, bash_command, run_sqlcl
+from .sqlcl_session import SqlclError, SqlclTimeout, bash_command, driver_epilogue, run_sqlcl
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -522,7 +522,7 @@ def _render_fetch_objects_driver(
         *_plsql_emit_clob_lines("l_out", "FETCH"),
         "END;",
         "/",
-        "EXIT SUCCESS ROLLBACK",
+        driver_epilogue(False),
         "",
     ])
     return "\n".join(lines)
@@ -1172,8 +1172,7 @@ def _render_apply_driver(target: Target, schema_steps: Sequence[BundleStep]) -> 
         *_plsql_emit_clob_lines("l_out", "POST_APPLY"),
         "END;",
         "/",
-        "COMMIT;",
-        "EXIT SUCCESS COMMIT",
+        driver_epilogue(True),
         "",
     ])
     return "\n".join(lines)
@@ -1201,7 +1200,7 @@ def _render_verify_driver(target: Target, verify_steps: Sequence[BundleStep]) ->
             text.rstrip("\n"),
             f"PROMPT RELEASE_VERIFY_END:{step.rel_file}",
         ])
-    lines.extend(["PROMPT RELEASE_VERIFY_OK", "EXIT SUCCESS ROLLBACK", ""])
+    lines.extend(["PROMPT RELEASE_VERIFY_OK", driver_epilogue(False), ""])
     return "\n".join(lines)
 
 
