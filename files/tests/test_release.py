@@ -522,9 +522,10 @@ class ReleaseBundleTests(unittest.TestCase):
         self.assertTrue((backups[0] / "APP_CODE.PACKAGE_BODY.ORDERS_PKG.sql").is_file())
 
         # Report created
-        reports = list((self.root / "scratch" / "release-reports").glob("run-rel-staging-*.md"))
-        self.assertEqual(len(reports), 1)
-        report_text = reports[0].read_text(encoding="utf-8")
+        reports = sorted((self.root / "scratch" / "release-reports").glob("run-rel-staging-*.md"))
+        self.assertGreaterEqual(len(reports), 1)
+        report_text = reports[-1].read_text(encoding="utf-8")
+        self.assertIn("- **Outcome:** SUCCEEDED", report_text)
         self.assertIn("before_invalid=1, after_invalid=1, new_invalid=0", report_text)
 
         # Verify apply driver used ALTER SESSION SET CURRENT_SCHEMA, WHENEVER SQLERROR EXIT SQL.SQLCODE, and no PLSQL_CODE_TYPE

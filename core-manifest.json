@@ -706,7 +706,7 @@
     },
     {
       "path": "tests/test_release.py",
-      "sha256": "7739df81d1c50c63ba96770f1de8b451efa511f303431118ceba27f297f960c7",
+      "sha256": "589ca37de76573e41fca221e5c2c3bdc7b87d1d83989a114f788563430333379",
       "executable": false
     },
     {
