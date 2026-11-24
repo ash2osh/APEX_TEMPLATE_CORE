@@ -256,7 +256,7 @@
     },
     {
       "path": "scripts/release.py",
-      "sha256": "132f3a4bc1a33e85fa5dc52a3d8c9a69ac9bf76ce05d6ad06cc1051aab812cba",
+      "sha256": "c7a470dde6ebee2491f5cd4ef7ad0a632d081122e99c6cc2309822432f8c7bbe",
       "executable": false
     },
     {

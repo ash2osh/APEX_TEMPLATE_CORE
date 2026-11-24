@@ -13,6 +13,7 @@ import contextlib
 import difflib
 import fnmatch
 import hashlib
+import importlib
 import inspect
 import json
 import os
@@ -2643,7 +2644,7 @@ def _acquire_release_lock(lock_path: Path, slug: str) -> Iterator[None]:
                     f"Another release run for '{slug}' is already in progress ({lock_path})"
                 ) from exc
         else:
-            import fcntl
+            fcntl = importlib.import_module("fcntl")
 
             try:
                 fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -2660,7 +2661,7 @@ def _acquire_release_lock(lock_path: Path, slug: str) -> Iterator[None]:
                 os.lseek(fd, 0, os.SEEK_SET)
                 msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
             else:
-                import fcntl
+                fcntl = importlib.import_module("fcntl")
 
                 fcntl.flock(fd, fcntl.LOCK_UN)
         except OSError:
