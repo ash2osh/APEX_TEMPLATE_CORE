@@ -263,7 +263,7 @@ class DevTestCliTests(unittest.TestCase):
             base = builtin_suite().scenarios
             first = replace(base[0], id="prerequisite", dependsOn=())
             dependent = replace(base[1], id="dependent", dependsOn=("prerequisite",))
-            independent = replace(base[2], id="independent", dependsOn=())
+            independent = replace(base[0], id="independent", dependsOn=())
             scenarios = (first, dependent, independent)
             suite, run = self._execution_fixture(root, scenarios)
             dispatched = []

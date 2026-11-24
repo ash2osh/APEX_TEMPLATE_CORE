@@ -531,12 +531,12 @@
     },
     {
       "path": "tests/test_dev_test_cleanup.py",
-      "sha256": "0683bb301cad8fcd9e8a29dd18f33d32457a34aeaac12d7496fbea8ff796dc4e",
+      "sha256": "1a7fe682e855173729973ee3ccf02562d234d5f80722e66dcb8c4491edc5d4aa",
       "executable": false
     },
     {
       "path": "tests/test_dev_test_cli.py",
-      "sha256": "40782c46fa85bf1d4b2439feb45975f1cf14155991fccb759fa5e7016f98ac3d",
+      "sha256": "62de96a498e498a917cf0803caf1a4e2ff46616adde9967157d938e3adb77097",
       "executable": false
     },
     {
@@ -716,7 +716,7 @@
     },
     {
       "path": "tests/test_schema_catalog.py",
-      "sha256": "a1d5fca4ec6af1dcee32b085338c45a32c034901391968d472927293e36297c2",
+      "sha256": "4a3f737e808041409ece8056b6b917af69ed6dbbc3b241b1f0c571c9b9123c46",
       "executable": false
     },
     {

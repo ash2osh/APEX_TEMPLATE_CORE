@@ -556,9 +556,13 @@ class PublicSynonymDuplicateTests(unittest.TestCase):
         with self.assertRaisesRegex(CatalogError, r"catalog repeats synonym APP\.ZZ_CUSTOMERS"):
             self.rows(self.row("APP", "ZZ_CUSTOMERS", "SYS"), self.row("APP", "ZZ_CUSTOMERS", "C##CLOUD$SERVICE"))
 
-    def test_two_identical_public_rows_still_raise(self) -> None:
-        with self.assertRaisesRegex(CatalogError, r"catalog repeats synonym PUBLIC\.ZZ_CUSTOMERS"):
-            self.rows(self.row("PUBLIC", "ZZ_CUSTOMERS", "SYS"), self.row("PUBLIC", "ZZ_CUSTOMERS", "SYS"))
+    def test_two_identical_public_rows_keep_one_for_adb(self) -> None:
+        synonyms = self.rows(self.row("PUBLIC", "ZZ_CUSTOMERS", "SYS"), self.row("PUBLIC", "ZZ_CUSTOMERS", "SYS"))
+        self.assertEqual([(item.owner, item.name, item.table_owner) for item in synonyms], [("PUBLIC", "ZZ_CUSTOMERS", "SYS")])
+
+    def test_two_identical_non_public_rows_still_raise(self) -> None:
+        with self.assertRaisesRegex(CatalogError, r"catalog repeats synonym APP\.ZZ_CUSTOMERS"):
+            self.rows(self.row("APP", "ZZ_CUSTOMERS", "SYS"), self.row("APP", "ZZ_CUSTOMERS", "SYS"))
 
 
 class SchemaCatalogIdentity:

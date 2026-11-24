@@ -135,7 +135,7 @@ def _artifact(
     *,
     name: str | None = None,
     object_id: int | None = 101,
-    scenario_id: str = "sqlcl-delivery",
+    scenario_id: str = "datatype-roundtrip",
 ) -> dict:
     if name is None:
         prefix = f"DT_{hashlib.sha256((run.run_id + scenario_id).encode('utf-8')).hexdigest()[:12].upper()}_"
@@ -156,7 +156,7 @@ def _write_evidence(
     run: RunEvidence,
     *,
     origin: str = "builtin",
-    scenario_id: str = "sqlcl-delivery",
+    scenario_id: str = "datatype-roundtrip",
     artifact: dict | None = None,
     cleanup_contract: object = None,
     add_precreation: bool = True,
@@ -260,7 +260,7 @@ class TestCleanupPlanning(unittest.TestCase):
         from scripts.dev_test_cleanup import plan_cleanup
 
         run = create_run(Path(self.temp.name))
-        scenario_id = "sqlcl-delivery"
+        scenario_id = "datatype-roundtrip"
         prefix = f"DT_{hashlib.sha256((run.run_id + scenario_id).encode('utf-8')).hexdigest()[:12].upper()}_"
         artifact = _artifact(run, name=f"{prefix}SD_TAB")
         _write_evidence(run, scenario_id=scenario_id, artifact=artifact)
