@@ -691,7 +691,7 @@
     },
     {
       "path": "tests/test_publication_identity.py",
-      "sha256": "c04c44ea35e35bf63f25dda606fe01025f6a624dedab7046605effe8c657febe",
+      "sha256": "8fe39b6e936c71ce1e8623928999b65f3709c7002d44decefd2eef826efee92b",
       "executable": false
     },
     {
