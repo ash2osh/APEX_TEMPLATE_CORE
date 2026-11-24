@@ -1153,7 +1153,13 @@ class ReleaseBundleTests(unittest.TestCase):
         subprocess.run(["git", "add", "releases"], cwd=self.root, stdin=subprocess.DEVNULL, check=True, capture_output=True)
         subprocess.run(["git", "commit", "-m", "Add prod-clean-rel"], cwd=self.root, stdin=subprocess.DEVNULL, check=True, capture_output=True)
         release_commit = subprocess.run(
-            ["git", "rev-parse", "HEAD"], cwd=self.root, stdin=subprocess.DEVNULL, check=True, capture_output=True, text=True
+            ["git", "rev-parse", "HEAD"],
+            cwd=self.root,
+            stdin=subprocess.DEVNULL,
+            check=True,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
         ).stdout.strip()
 
         (bundle / "01-ddl" / "untracked.sql").write_text("SELECT 1 FROM DUAL;\n", encoding="utf-8", newline="\n")
@@ -1173,6 +1179,7 @@ class ReleaseBundleTests(unittest.TestCase):
             check=True,
             capture_output=True,
             text=True,
+            encoding="utf-8",
         ).stdout.strip()
         self.assertEqual(tagged_sha, release_commit)
         locked = json.loads((bundle / "release.json").read_text(encoding="utf-8"))
