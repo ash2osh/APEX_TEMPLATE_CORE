@@ -1414,7 +1414,7 @@ def cmd_run(
                     tmp_path / f"before-invalids-{schema}",
                     "release-before-invalids.sql",
                     driver_sql,
-                    phase="read",
+                    phase="preconditions",
                     environ=values,
                 )
                 before_payload = _extract_framed_json(output, "BEFORE_INVALID")
@@ -1449,7 +1449,7 @@ def cmd_run(
                     tmp_path / f"post-apply-{schema}",
                     "release-post-apply.sql",
                     driver_sql,
-                    phase="read",
+                    phase="postconditions",
                     environ=values,
                 )
                 post_payload = _extract_framed_json(output, "POST_APPLY")
