@@ -96,12 +96,12 @@ class DevTestCliTests(unittest.TestCase):
     def test_schema_and_scenario_selection_are_repeatable_and_ordered(self) -> None:
         args = dev_test.build_parser().parse_args([
             "--plan", "--env", "dev", "--schema", "APP", "--suite", "suite.json",
-            "--scenario", "migration-success", "--scenario", "datatype-roundtrip",
+            "--scenario", "compiler-settings", "--scenario", "datatype-roundtrip",
         ])
         self.assertEqual("APP", args.schema)
-        self.assertEqual(["migration-success", "datatype-roundtrip"], args.scenario)
+        self.assertEqual(["compiler-settings", "datatype-roundtrip"], args.scenario)
         selected = dev_test.select_scenarios(builtin_suite(), args.scenario)
-        self.assertEqual(["datatype-roundtrip", "migration-success"], [item.id for item in selected])
+        self.assertEqual(["datatype-roundtrip", "compiler-settings"], [item.id for item in selected])
 
     def test_cleanup_rejects_target_and_schema_overrides(self) -> None:
         run_id = "20261016T120000Z-" + "c" * 32

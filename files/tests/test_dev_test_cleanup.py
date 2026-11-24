@@ -602,7 +602,7 @@ class TestProjectCleanupContract(unittest.TestCase):
                     patch("scripts.dev_test_cleanup.resolve_target", return_value=target), \
                     patch("scripts.dev_test_cleanup._capture_live_inventory", return_value=live), \
                     patch("scripts.dev_test_runtime.read_rows", return_value=rows), \
-                    patch("scripts.migration_checks.run_checks", side_effect=checks_runner):
+                    patch("scripts.dev_test_checks.run_checks", side_effect=checks_runner):
                 plan = plan_cleanup(run, {})
                 self.assertEqual(plan["status"], "READY")
                 self.assertEqual(plan["operations"][0]["bindings"], ["DEVTEST_ORDER_ID"])

@@ -25,7 +25,7 @@ from scripts.dev_test_target import (
     _gather_input_paths,
     _parse_planning_output,
 )
-from scripts.migration_checks import CheckReport, OBSERVED_IDENTITY_FIELDS
+from scripts.dev_test_checks import CheckReport, OBSERVED_IDENTITY_FIELDS
 from scripts.sqlcl_session import SqlclResult
 
 
