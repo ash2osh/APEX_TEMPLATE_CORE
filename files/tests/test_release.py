@@ -2418,12 +2418,12 @@ class ReleaseBundleTests(unittest.TestCase):
         backups = sorted((self.root / "scratch" / "backups").glob("preflight-filter-rel-staging-*"))
         self.assertEqual(len(backups), 1)
         bmanifest = json.loads((backups[0] / "backup-manifest.json").read_text(encoding="utf-8"))
-        backed_names = {(o["objectType"], o["objectName"]) for o in bmanifest["backedUp"]}
+        backed_names = {(o["objectType"], o["objectName"]) for o in bmanifest["objects"]}
         self.assertEqual(
             backed_names,
             {("PACKAGE BODY", "ORDERS_PKG"), ("VIEW", "ORDERS_V"), ("PACKAGE", "PATCH_PKG")},
         )
-        for entry in bmanifest["backedUp"]:
+        for entry in bmanifest["objects"]:
             self.assertTrue((backups[0] / entry["file"]).read_text(encoding="utf-8").strip())
 
         # 3) mode: "new" existence check still fails when the object exists, even without fetching its source
